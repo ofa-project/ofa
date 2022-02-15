@@ -4,6 +4,7 @@
   "description": "Un assistant Discord ouvert à tous",
   "main": "src/ofa.js",
   "scripts": {
+    "watch": "nodemon -L --watch src",
     "start": "node src/ofa.js",
     "format": "prettier --write \"src/**/*.js\""
   },
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@sapphire/prettier-config": "^1.3.0",
+    "nodemon": "^2.0.15",
     "prettier": "^2.5.1"
   }
 }
