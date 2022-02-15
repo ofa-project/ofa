@@ -18,19 +18,17 @@
 const { Client, Intents } = require('discord.js');
 
 const client = new Client({
-    intents: new Intents([ 
-        Intents.FLAGS.GUILDS
-    ])
+	intents: new Intents([Intents.FLAGS.GUILDS])
 });
 
 // Processus principal
 (async () => {
-    try {
-        // Connecte le client à la passerelle de Discord
-        await client.login().then((token) => console.info(`${client.user.username} connecté !`));
-    } catch (error) {
-        console.error(error);
+	try {
+		// Connecte le client à la passerelle de Discord
+		await client.login().then((token) => console.info(`${client.user.username} connecté !`));
+	} catch (error) {
+		console.error(error);
 		client.destroy();
 		process.exit(1);
-    }
+	}
 })();
