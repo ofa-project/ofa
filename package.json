@@ -1,0 +1,23 @@
+{
+  "name": "ofa-bot",
+  "version": "1.0.0",
+  "description": "Un assistant Discord ouvert à tous",
+  "main": "src/ofa.js",
+  "scripts": {
+    "test": "echo \"Test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ofa-project/ofa.git"
+  },
+  "keywords": [
+    "bot",
+    "discord"
+  ],
+  "author": "OFA Project",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ofa-project/ofa/issues"
+  },
+  "homepage": "https://github.com/ofa-project/ofa#readme"
+}
