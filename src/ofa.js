@@ -28,6 +28,8 @@ const client = new SapphireClient({
 	defaultPrefix: config.prefix,
 
 	presence: {
+		// TODO: Si dev mode 'dnd'
+		status: 'online',
 		activities: [
 			{
 				name: "comment s'améliorer",
