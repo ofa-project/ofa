@@ -25,7 +25,7 @@ class UserEvent extends Listener {
 		});
 	}
 
-	run() {
+	async run() {
 		const { client, logger } = this.container;
 		const stores = [...client.stores.values()];
 
