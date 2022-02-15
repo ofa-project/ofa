@@ -22,6 +22,10 @@
   },
   "homepage": "https://github.com/ofa-project/ofa#readme",
   "dependencies": {
+    "@sapphire/framework": "^2.4.0",
+    "@sapphire/plugin-editable-commands": "^1.1.3",
+    "@sapphire/plugin-logger": "^2.1.3",
+    "colorette": "^2.0.16",
     "discord.js": "^13.6.0"
   },
   "devDependencies": {

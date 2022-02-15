@@ -15,19 +15,42 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { Client, Intents } = require('discord.js');
+require('./setup');
 
-const client = new Client({
-	intents: new Intents([Intents.FLAGS.GUILDS])
+const { Intents } = require('discord.js');
+const { container, SapphireClient, LogLevel } = require('@sapphire/framework');
+
+const colorette = require('colorette');
+
+const config = require('./config.json');
+
+const client = new SapphireClient({
+	defaultPrefix: config.prefix,
+
+	presence: {
+		activities: [
+			{
+				name: "comment s'améliorer",
+				type: 'WATCHING'
+			}
+		]
+	},
+
+	logger: {
+		// TODO: Si dev mode LogLevel.Debug
+		level: LogLevel.Info
+	},
+
+	intents: new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES])
 });
 
 // Processus principal
 (async () => {
 	try {
 		// Connecte le client à la passerelle de Discord
-		await client.login().then((token) => console.info(`${client.user.username} connecté !`));
+		await client.login().then((token) => container.logger.info(`${colorette.yellow(client.user.username)} connecté !`));
 	} catch (error) {
-		console.error(error);
+		container.logger.error(error);
 		client.destroy();
 		process.exit(1);
 	}
