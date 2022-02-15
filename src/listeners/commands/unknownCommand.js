@@ -30,7 +30,7 @@ class UserEvent extends Listener {
 	async run({ message, commandName }) {
 		const { client } = this.container;
 
-		const commandList = [...client.stores.get('commands').keys()];
+		const commandList = [...client.stores.get('commands').values()].map((command) => command.name);
 		const closestCommand = fl.closest(commandName, commandList);
 
 		return send(message, `La commande \`${commandName}\` est inconnue. Peut être vouliez vous dire \`${closestCommand}\` ?`);
