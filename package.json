@@ -4,9 +4,9 @@
   "description": "Un assistant Discord ouvert à tous",
   "main": "dist/ofa.js",
   "scripts": {
-    "build": "swc src -d dist",
-    "watch": "nodemon -L --watch src",
-    "format": "prettier --write \"src/**/*.{ts,js}\"",
+    "build": "pnpx swc src -d dist",
+    "watch": "pnpx nodemon -L --watch src",
+    "format": "pnpx prettier --write \"src/**/*.{ts,js}\"",
     "start": "node dist/ofa.js"
   },
   "repository": {
