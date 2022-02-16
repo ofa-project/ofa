@@ -33,7 +33,7 @@ class UserEvent extends Listener {
 		const commandList = [...client.stores.get('commands').values()].map((command) => command.name);
 		const closestCommand = fl.closest(commandName, commandList);
 
-		return send(message, `La commande \`${commandName}\` est inconnue. Peut être vouliez vous dire \`${closestCommand}\` ?`);
+		return await send(message, `La commande \`${commandName}\` est inconnue. Peut être vouliez vous dire \`${closestCommand}\` ?`);
 	}
 }
 

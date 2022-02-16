@@ -37,7 +37,7 @@ Latence: ${Math.round(client.ws.ping)}ms
 Latence de l'API: ${msg.createdTimestamp - message.createdTimestamp}ms
         `;
 
-		return send(message, content);
+		return await send(message, content);
 	}
 }
 
