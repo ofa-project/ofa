@@ -15,19 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { Listener } = require('@sapphire/framework');
-const { send } = require('@sapphire/plugin-editable-commands');
+import { Events, Listener, ListenerOptions, UnknownCommandPayload } from '@sapphire/framework';
 
-const fl = require('fastest-levenshtein');
+import { ApplyOptions } from '@sapphire/decorators';
+import fl from 'fastest-levenshtein';
+import { send } from '@sapphire/plugin-editable-commands';
 
+@ApplyOptions<ListenerOptions>({
+	event: Events.UnknownCommand,
+	once: true
+})
 class UserEvent extends Listener {
-	constructor(context, options = {}) {
-		super(context, {
-			...options
-		});
-	}
-
-	async run({ message, commandName }) {
+	public async run({ message, commandName }: UnknownCommandPayload) {
 		const { client } = this.container;
 
 		const commandList = [...client.stores.get('commands').values()].map((command) => command.name);

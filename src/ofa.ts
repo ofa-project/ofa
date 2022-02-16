@@ -15,16 +15,18 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-require('./setup');
+import './setup';
 
-const { Intents } = require('discord.js');
-const { container, SapphireClient, LogLevel } = require('@sapphire/framework');
+import { LogLevel, container } from '@sapphire/framework';
 
-const colorette = require('colorette');
+import { Intents } from 'discord.js';
+import { OFAClient } from './lib/OFAClient';
+import { Player } from 'discord-player';
+import config from '../config.json';
+import { yellow } from 'colorette';
 
-const config = require('./config.json');
-
-const client = new SapphireClient({
+// Client Discord
+const client = new OFAClient({
 	defaultPrefix: config.prefix,
 
 	presence: {
@@ -43,14 +45,18 @@ const client = new SapphireClient({
 		level: LogLevel.Info
 	},
 
-	intents: new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES])
+	intents: new Intents([Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_VOICE_STATES])
 });
+
+// Client musique
+const player = new Player(client);
+client.player = player;
 
 // Processus principal
 (async () => {
 	try {
 		// Connecte le client à la passerelle de Discord
-		await client.login().then((token) => container.logger.info(`${colorette.yellow(client.user.username)} connecté !`));
+		await client.login().then(() => container.logger.info(`${yellow(client.user?.username ?? '')} connecté !`));
 	} catch (error) {
 		container.logger.error(error);
 		client.destroy();

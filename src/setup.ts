@@ -15,18 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { container } = require('@sapphire/framework');
+import '@sapphire/plugin-logger/register';
+import '@sapphire/plugin-editable-commands/register';
 
-require('@sapphire/plugin-logger/register');
-require('@sapphire/plugin-editable-commands/register');
-
-const colorette = require('colorette');
+import { container } from '@sapphire/framework';
+import { createColors } from 'colorette';
+import http from 'http';
 
 // Active Colorette
-colorette.createColors({ useColor: true });
+createColors({ useColor: true });
 
 // Créer un server HTTP, sinon l'app Heroku crash
-const http = require('http');
 const port = process.env.PORT || 3000;
 
 http.createServer().listen(port, () => container.logger.info(`Serveur HTTP ouvert sur le port ${port}`));

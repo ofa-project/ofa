@@ -15,22 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const { Listener } = require('@sapphire/framework');
+import type { Player } from 'discord-player';
+import { SapphireClient } from '@sapphire/framework';
 
-class UserEvent extends Listener {
-	constructor(context, options = {}) {
-		super(context, {
-			...options,
-			once: true
-		});
-	}
+export class OFAClient extends SapphireClient {}
 
-	async run() {
-		const { client, logger } = this.container;
-		const stores = [...client.stores.values()];
-
-		for (const store of stores) logger.info(`Chargé: ${store.size.toString().padEnd(3, '')} ${store.name}`);
+declare module '@sapphire/framework' {
+	interface SapphireClient {
+		player: Player;
 	}
 }
-
-exports.UserEvent = UserEvent;
