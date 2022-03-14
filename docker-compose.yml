@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  ofabot:
-    image: ofa-project/bot
-    restart: always
-    ports:
-      - 3000:3000
