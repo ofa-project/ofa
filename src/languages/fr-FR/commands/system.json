@@ -1,0 +1,6 @@
+{
+	"ping": {
+		"pong": "Pong ?",
+		"message": "Pong ! 🏓\nLatence du client: `{{clientPing}}ms {{clientPingPellet}}`\nLatence de l'API de Discord: `{{discordPing}}ms {{discordPingPellet}}`"
+	}
+}

@@ -6,6 +6,10 @@ import { OFAClient } from '#lib/client';
 const client = new OFAClient();
 const logger = client.logger;
 
+// For dev
+import { container } from '@sapphire/framework';
+container.i18n.fetchLanguage = () => 'fr-FR';
+
 (async () => {
 	client
 		.login()
